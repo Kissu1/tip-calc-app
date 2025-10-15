@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+@import "tailwindcss";
 
 @theme {
   --color-primary: hsl(172, 67%, 45%);

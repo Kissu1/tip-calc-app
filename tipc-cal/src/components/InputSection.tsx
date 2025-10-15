@@ -1,4 +1,13 @@
-export default function InputSection() {
+export default function InputSection({
+  bill,
+  setBill,
+  tip,
+  setTip,
+  people,
+  setPeople,
+}: any) {
+  const tips = [5, 10, 15, 25, 50];
+
   return (
     <section className="space-y-6">
       <div>
@@ -13,6 +22,8 @@ export default function InputSection() {
           />
           <input
             type="number"
+            value={bill || ""}
+            onChange={(e) => setBill(Number(e.target.value))}
             placeholder="0"
             className="w-full bg-[var(--color-neutral-50)] text-right text-2xl text-[var(--color-neutral-900)] px-4 py-2 rounded-md outline-none"
           />
@@ -24,16 +35,23 @@ export default function InputSection() {
           Select Tip %
         </label>
         <div className="grid grid-cols-3 gap-3">
-          {["5", "10", "15", "25", "50"].map((val) => (
+          {tips.map((val) => (
             <button
               key={val}
-              className="bg-[var(--color-neutral-900)] text-white text-xl py-2 rounded-md hover:bg-[var(--color-primary)]"
+              onClick={() => setTip(val)}
+              className={`text-xl py-2 rounded-md ${
+                tip === val
+                  ? "bg-[var(--color-primary)] text-[var(--color-neutral-900)]"
+                  : "bg-[var(--color-neutral-900)] text-white"
+              }`}
             >
               {val}%
             </button>
           ))}
           <input
             placeholder="Custom"
+            value={tip || ""}
+            onChange={(e) => setTip(Number(e.target.value))}
             className="bg-[var(--color-neutral-50)] text-center text-xl py-2 rounded-md outline-none"
           />
         </div>
@@ -51,6 +69,8 @@ export default function InputSection() {
           />
           <input
             type="number"
+            value={people || ""}
+            onChange={(e) => setPeople(Number(e.target.value))}
             placeholder="0"
             className="w-full bg-[var(--color-neutral-50)] text-right text-2xl text-[var(--color-neutral-900)] px-4 py-2 rounded-md outline-none"
           />
